@@ -66,7 +66,7 @@ export default function CheckoutForm(props) {
   const handleResponse = response => {
     setLoading(false);
     if (response.error) {
-      setErrorMsg(response.error.message);
+      setErrorMsg(typeof response.error === 'string' ? response.error : response.error.message);
       return;
     }
     props.setPaymentCompleted(response.success ? true : false);
